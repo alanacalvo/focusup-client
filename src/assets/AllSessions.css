@@ -1,0 +1,16 @@
+.gridContainer{
+  display: grid;
+  grid-template-columns: 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px;
+  column-gap: 25px;
+  row-gap: 15px;
+  justify-items: center;
+  border: 2px solid black
+}
+.cards {
+  border: 1px black solid;
+  padding: 20px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate, Navigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios'
 
 
@@ -27,7 +27,7 @@ function ViewSession({getAllSessions}) {
     <div>
       <p>{session.name}</p>
       <p>{session.todos}</p>
-      <p>{session.length}</p>
+      {/* <p>{session.length}</p> */}
       <p>{session.type}</p>
       {/* <form > */}
       <button 

@@ -1,8 +1,8 @@
-import './App.css';
+import './assets/App.css';
 import { Routes, Route } from 'react-router-dom';
-import AllSessions from './Components/pages/AllSessions';
+import AllSessions from './views/AllSessions';
 import NewSession from './Components/NewSession';
-import ViewSession from './Components/pages/ViewSession'
+import ViewSession from './views/ViewSession'
 import CountdownTimer from './Components/CountdownTimer';
 import { TimerProvider } from './Context/TimerContext';
 import axios from 'axios';
@@ -17,16 +17,16 @@ function App() {
   }
   useEffect(() => {
     getAllSessions()
+    console.log(sessions)
   }, []);
 
   return (
     <div className="App">
       <TimerProvider>
-      <NewSession  getAllSessions={getAllSessions}/>
-      <CountdownTimer />
+      {/* <NewSession  getAllSessions={getAllSessions}/> passing get all sessions to be able to rerender them after the post request. */}
+      {/* <CountdownTimer /> */}
       <Routes>
         <Route path='/' element={<AllSessions sessions={sessions}/>}></Route>
-        <Route path='/' element={<NewSession  getAllSessions={getAllSessions}/>}></Route>
         <Route path='/:id' element={<ViewSession getAllSessions={getAllSessions}/>}></Route>
       </Routes>
       </TimerProvider>
