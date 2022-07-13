@@ -23,7 +23,7 @@ function App() {
   return (
     <div className="App">
       <TimerProvider>
-      {/* <NewSession  getAllSessions={getAllSessions}/> passing get all sessions to be able to rerender them after the post request. */}
+      <NewSession  getAllSessions={getAllSessions}/> {/* passing get all sessions to be able to rerender them after the post request. */}
       {/* <CountdownTimer /> */}
       <Routes>
         <Route path='/' element={<AllSessions sessions={sessions}/>}></Route>
