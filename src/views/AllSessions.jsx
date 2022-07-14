@@ -1,23 +1,23 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import NewSession from '../Components/NewSession';
-import '../assets/AllSessions.css'
-import Grid from '@mui/material/Grid'
-import Paper from '@mui/material/Paper'
-import Container from '@mui/material/Container'
-import SessionCard from '../Components/SessionCards'
+import '../assets/AllSessions.css';
+import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
+import Container from '@mui/material/Container';
+import SessionCard from '../Components/SessionCards';
 import SessionCards from '../Components/SessionCards';
 
 function AllSessions({sessions}) {
-
+  const navigate = useNavigate();
   if (sessions.length === 0) {
     return <h1>no sessions</h1>
   }
   return (
     <Container>
-      <Grid container spacing={2}>
+      <Grid container spacing={1}>
       {sessions ? sessions.map((session, i) => {
         return (
-          <Grid item xs={4} sm={3} md={2} key={i}>
+          <Grid item xs={4} sm={3} md={1.75} key={i}>
             {/* <Link to={`/${session._id}`} > */}
             <SessionCards session={session}/>
             {/* </Link> */}
@@ -28,7 +28,7 @@ function AllSessions({sessions}) {
       }
       </Grid>
       {
-        <button onClick={() => <NewSession />}>New Session</button>
+        <button onClick={() => navigate('/newsession')}>New Session</button>
       }
     </Container>
   )
