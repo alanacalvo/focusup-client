@@ -10,25 +10,28 @@ function SessionCards({ session }) {
   const navigate = useNavigate(); 
 
   return (
-    <Card 
-    className='cards'
-    elevation={2} 
-    sx={{width: 150, height: 150}}
-    sm={{width: 100, height: 100}}
-    >
-      <CardContent>
-        <Typography 
-        variant={'h5'}
-        sm={{ fontSize: 14 }}
-        align='center'
-        >
-          {session.name}
-          <button onClick={() => navigate(`/${session._id}`)}>Details</button>
-        </Typography>
+    <div className='cards' onClick={() => navigate(`/${session._id}`)}>
+      <h3>{session.name}</h3>
+    </div>
+    // <Card 
+    // className='cards'
+    // elevation={2} 
+    // sx={{width: 150, height: 150}}
+    // sm={{width: 100, height: 100}}
+    // >
+    //   <CardContent>
+    //     <Typography 
+    //     variant={'h5'}
+    //     sm={{ fontSize: 14 }}
+    //     align='center'
+    //     >
+    //       {session.name}
+    //       <button onClick={() => navigate(`/${session._id}`)}>Details</button>
+    //     </Typography>
 
-      </CardContent>
+    //   </CardContent>
 
-    </Card>
+    // </Card>
    )
 }
 

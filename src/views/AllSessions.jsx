@@ -10,6 +10,7 @@ import { useContext, useState } from 'react';
 import PostSessionForm from '../Components/PostSessionForm';
 import CountdownTimer from '../Components/CountdownTimer';
 import { Modal } from '@mui/material';
+import '../assets/AllSessions.css'
 
 function AllSessions({sessions}) {
   const timer = useContext(TimerContext);
@@ -19,31 +20,42 @@ function AllSessions({sessions}) {
     return <h1>no sessions</h1>
   }
   return (
-    <Container >
+    <>
+    <div className='gridContainer'>
+    {sessions ? sessions.map((session, i) => {
+        return (
+          <div className='cards' key={i}>
+            <SessionCards session={session}/>
+          </div>
+        )
+      })
+        : <h2>searching for sessions</h2>
+      }
+    {/* <Container >
       <Grid className='gridContainer' container spacing={1}>
       {sessions ? sessions.map((session, i) => {
         return (
           <Grid item xs={4} sm={3} md={1.75} key={i}>
-            {/* <Link to={`/${session._id}`} > */}
             <SessionCards session={session}/>
-            {/* </Link> */}
           </Grid>
         )
       })
         : <h2>searching for sessions</h2>
       }
       </Grid>
-      {
-        <div className='newSessionBtn' onClick={() => setOpenModal(true)}>New Session</div>
-      }
       {openModal && <NewSession closeModal={setOpenModal}/>}
-
       { timer.secondsRemaining === 0 
         ? <PostSessionForm />
         : <CountdownTimer />
+      }  
+    </Container> */}
+    </div>
+      {
+        <div className='newSessionBtn' onClick={() => setOpenModal(true)}>
+          <h1>Ready to get started, user?</h1>
+          </div>
       }
-            
-    </Container>
+      </>
   )
 }
 

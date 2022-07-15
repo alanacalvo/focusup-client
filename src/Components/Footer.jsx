@@ -1,8 +1,13 @@
 import React from 'react'
 
-function Footer() {
+function Footer({ setOpenModal }) {
+  
   return (
-    <div className='footer'>Footer</div>
+    
+      <div className='newSessionBtn' onClick={() => setOpenModal(true)}>
+        <h1>Ready to get started, user?</h1>
+        </div>
+    
   )
 }
 

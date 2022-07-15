@@ -9,11 +9,11 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Header from './Components/Header'
 import Footer from './Components/Footer'
-
-
-// import FormUpdateSession from './Components/FormUpdateSession';
-// import { ThemeProvider, createTheme, makeStyles } from '@material-ui/core';
-
+// import styled from 'styled-components';
+// import Grid from './Components/Layout/Grid'
+// import FullWidth from './Components/Layout/FullWidth'
+// import MaxWidth from './Components/Layout/MaxWidth'
+// import Row from './Components/Layout/Row'
 
 function App() {
   const [sessions, setSessions] = useState([]);
@@ -25,23 +25,21 @@ function App() {
   useEffect(() => {
     getAllSessions()
     console.log(sessions)
-  }, []);
+  }, [sessions]);
 
   return (
     <div className="App">
       <Header />
-{/* <MainContainer /> */}
       <TimerProvider>
         <Router>
           <Routes>
-
             <Route path='/' element={<AllSessions sessions={sessions} />}></Route>
-            <Route path='/newsession' element={<NewSession getAllSessions={getAllSessions} />}></Route> {/* passing get all sessions to be able to rerender them after the post request. */}
-            <Route path='/:id' element={<ViewSession getAllSessions={getAllSessions} sessions={sessions}/>}></Route>
+            <Route path='/newsession' element={<NewSession />}></Route>
+            <Route path='/:id' element={<ViewSession getAllSessions={getAllSessions} sessions={sessions} />}></Route>
           </Routes>
         </Router>
       </TimerProvider>
-{/* <Footer /> */}
+      {/* <Footer /> */}
     </div>
   );
 }
