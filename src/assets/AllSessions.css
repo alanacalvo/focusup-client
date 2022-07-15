@@ -1,10 +1,11 @@
-/* .gridContainer{
+.gridContainer{
   display: grid;
   grid-template-columns: 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px;
   column-gap: 25px;
   row-gap: 15px;
   justify-items: center;
-  border: 2px solid black
+  /* border: 2px solid black; */
+  margin-top: 15%;
 }
 .cards {
   border: 1px black solid;
@@ -13,4 +14,4 @@
   display: flex;
   flex-direction: column;
   background-color: white;
-} */
+}

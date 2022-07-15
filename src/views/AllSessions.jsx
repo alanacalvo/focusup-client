@@ -4,17 +4,23 @@ import '../assets/AllSessions.css';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Container from '@mui/material/Container';
-import SessionCard from '../Components/SessionCards';
 import SessionCards from '../Components/SessionCards';
+import { useTimer, TimerContext } from '../Context/TimerContext';
+import { useContext, useState } from 'react';
+import PostSessionForm from '../Components/PostSessionForm';
+import CountdownTimer from '../Components/CountdownTimer';
+import { Modal } from '@mui/material';
 
 function AllSessions({sessions}) {
-  const navigate = useNavigate();
+  const timer = useContext(TimerContext);
+  const [openModal, setOpenModal] = useState(false)
+
   if (sessions.length === 0) {
     return <h1>no sessions</h1>
   }
   return (
-    <Container>
-      <Grid container spacing={1}>
+    <Container >
+      <Grid className='gridContainer' container spacing={1}>
       {sessions ? sessions.map((session, i) => {
         return (
           <Grid item xs={4} sm={3} md={1.75} key={i}>
@@ -28,8 +34,15 @@ function AllSessions({sessions}) {
       }
       </Grid>
       {
-        <button onClick={() => navigate('/newsession')}>New Session</button>
+        <div className='newSessionBtn' onClick={() => setOpenModal(true)}>New Session</div>
       }
+      {openModal && <NewSession closeModal={setOpenModal}/>}
+
+      { timer.secondsRemaining === 0 
+        ? <PostSessionForm />
+        : <CountdownTimer />
+      }
+            
     </Container>
   )
 }

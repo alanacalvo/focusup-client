@@ -1,7 +1,47 @@
+body {
+  /* position: relative; */
+  background-color: rgb(232, 151, 0);
+  max-width: 100vw;
+  /* padding: 30px; */
+  /* background-attachment: fixed; */
+}
+
 .App {
+  /* min-height: 100vh; */
   display: flex;
-  padding: 20px;
-  align-items: center;
-  justify-content: center;
-  background-color: rgb(255, 191, 71);
+  flex-direction: column;
+  margin-top: 13%;
+}
+.mainContainer {
+  /* width:1020px; */
+  height: 100%;
+  margin-top: 40px;
+  margin-left:auto;
+  margin-right:auto;
+  padding: 15px;
+}
+.header {
+  background-color: #00c8cb;
+  color: rgb(213, 213, 213);
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 13vh;
+  left: 0px;
+  padding: 5px;
+}
+
+/* .footer {
+  background-color: #00c8cb;
+  color: blue;
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  width: 100%;
+  height: 10%;
+} */
+
+.newSessionBtn {
+  background-color: #00c8cb;
+  bottom: 0px;
 }

@@ -18,6 +18,8 @@ export const TimerProvider = ({ children }) => {
   
   const [secondsRemaining, setSecondsRemaining] = useState(0)
 
+  const [sessionStarted, setSessionStarted] = useState();
+
   const interval = () => setTimeout(() => {
     if (secondsRemaining) {
       setSecondsRemaining(secondsRemaining - 1)
@@ -27,6 +29,7 @@ export const TimerProvider = ({ children }) => {
   useEffect(() => {
     if (secondsRemaining) {
       interval()
+      // console.log(secondsRemaining)
     }
   }, [secondsRemaining])
   
@@ -42,7 +45,7 @@ export const TimerProvider = ({ children }) => {
   // };
 
   return (
-    <TimerContext.Provider value={{timer, setTimer, setSecondsRemaining, secondsRemaining}}>
+    <TimerContext.Provider value={{timer, setTimer, setSecondsRemaining, secondsRemaining, sessionStarted, setSessionStarted}}>
       {/* <TimerUpdateContext.Provider value={}> */}
         {children}
       {/* </TimerUpdateContext.Provider> */}

@@ -11,8 +11,9 @@ function SessionCards({ session }) {
 
   return (
     <Card 
+    className='cards'
     elevation={2} 
-    sx={{width: 160, height: 160}}
+    sx={{width: 150, height: 150}}
     sm={{width: 100, height: 100}}
     >
       <CardContent>

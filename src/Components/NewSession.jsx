@@ -2,25 +2,18 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useTimer, TimerContext } from '../Context/TimerContext';
 import DurationPicker from 'react-duration-picker';
-// import { makeStyles } from '@mui/styles';
+import { useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Input from '@mui/material/Input';
 import { ClassNames } from '@emotion/react';
+import { Autocomplete } from '@mui/material';
+import '../assets/Modal.css';
 
-// const useStyles = makeStyles({
-//   field: {
-//     marginTop: 20,
-//     marginBottom: 20,
-//     display: 'block'
-//   }
-// })
-const style = {
-  color: 'green'
-}
-function NewSession({ getAllSessions }) {
-  // const classes = useStyles();
-  const { timer, setTimer, setSecondsRemaining } = useTimer(TimerContext);
+function NewSession({ closeModal }) {
+  const navigate = useNavigate();
+  const { timer, setTimer, 
+    setSecondsRemaining, setSessionStarted } = useTimer(TimerContext);
 
   const initialDetails = {
     name: '',
@@ -29,36 +22,34 @@ function NewSession({ getAllSessions }) {
       hours: '00',
       minutes: '00'
     },
+    preSessionTodos: ''
   }
 
   const [duration, setDuration] = useState({ hours: '00', minutes: '00' })
   const [details, setDetails] = useState(initialDetails);
-  
+
   const handleChange = (e) => {
     setDetails({ ...details, [e.target.id]: e.target.value })
   }
-  
+
   const onChange = (duration) => {
-    // console.log()
     setDuration(duration)
-    console.log('onChange duration:', duration)
+    // console.log('onChange duration:', duration)
     // .then( RESET DURATION PICKER )
   };
 
   const handleSubmit = () => {
-    // e.preventDefault();
-    console.log('duration.hours:', duration.hours, 'duration.minutes:', duration.minutes)
     axios.post('http://localhost:5000/NewSession', {
       name: details.name,
       type: details.type,
+      preSessionTodos: details.preSessionTodos,
       length: {
         hours: duration.hours,
         minutes: duration.minutes
-      }
+      },
     })
       .then(res => {
         console.log(res.data)
-
         const hours = duration.hours;
         // console.log(hours)
         const minutes = duration.minutes;
@@ -68,19 +59,20 @@ function NewSession({ getAllSessions }) {
         const total = timerToSecs
         setTimer(duration)
         setSecondsRemaining(timerToSecs)
-        // console.log('details.length: ',details.length) // '00' '00' no matter where this is placed
-        console.log('timer', timer) // TIMER IS ONE STEP BEHIND
-        console.log('post .then duration:', duration) // DURATION IS ACCURATE TO WHAT IS IN DURATION PICKER WHEN SUBMITTED
-        getAllSessions()
+        setSessionStarted(true)
         setDetails(initialDetails)
-        // setTimer(details.length)
-        // console.log(timer)
+        console.log(timer)
+        navigate('/')
       })
   }
 
-
   return (
+    <div className='modalBackground'>
+      <div>
+        <button onClick={() => closeModal(false)}> X </button>
+      </div>
     <Box
+      className='modalContainer'
       component='form'
       autoComplete="off"
       noValidate
@@ -89,10 +81,8 @@ function NewSession({ getAllSessions }) {
         handleSubmit();
       }}
     >
-
       <Input
         required
-        // className={classes.field}
         label='Session Name'
         placeholder='Session Name'
         color='secondary'
@@ -100,16 +90,7 @@ function NewSession({ getAllSessions }) {
         value={details.name}
         id='name'
       />
-      {/* <label htmlFor="name">Name: </label>
-        <input
-          type="text"
-          id="name"
-          value={details.name}
-          // onChange={handleChange}
-  /> */}
-
-
-      <label>Select Type: </label>
+      <br></br>
       <select
         type="text"
         id="type"
@@ -126,14 +107,25 @@ function NewSession({ getAllSessions }) {
         id="length"
         onChange={onChange}
       />
-
+      <br></br>
+      <Input
+        label='To Do List'
+        placeholder='To Do List'
+        color='secondary'
+        onChange={handleChange}
+        value={details.preSessionTodos}
+        id='todos'
+      />
+      <br></br>
+      {/* <Autocomplete
+      id='todos'
+      />
+      <br></br> */}
       <button
         type="submit"
       >Let's get started!</button>
-
-
-
     </Box>
+    </div>
   )
 }
 
