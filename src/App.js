@@ -1,19 +1,15 @@
-import './assets/App.css';
 import * as React from 'react';
 import { Routes, Route, BrowserRouter as Router } from 'react-router-dom';
-import AllSessions from './views/AllSessions';
-import NewSession from './Components/NewSession';
-import ViewSession from './views/ViewSession'
+import ViewSession from './views/ViewSession/ViewSession'
 import { TimerProvider } from './Context/TimerContext';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import Header from './Components/Header'
-import Footer from './Components/Footer'
-// import styled from 'styled-components';
-// import Grid from './Components/Layout/Grid'
-// import FullWidth from './Components/Layout/FullWidth'
-// import MaxWidth from './Components/Layout/MaxWidth'
-// import Row from './Components/Layout/Row'
+import './App.css'
+import MainPage from './views/MainPage/MainPage';
+import Layout from './Components/Layout/Layout'
+import Header from './Components/Header/Header'
+import StartSessionButton from './Components/StartSessionButton/StartSessionButton'
+import Footer from './Components/Footer/Footer'
 
 function App() {
   const [sessions, setSessions] = useState([]);
@@ -25,21 +21,21 @@ function App() {
   useEffect(() => {
     getAllSessions()
     console.log(sessions)
-  }, [sessions]);
+  }, []);
 
   return (
     <div className="App">
-      <Header />
+    <Header />
       <TimerProvider>
         <Router>
           <Routes>
-            <Route path='/' element={<AllSessions sessions={sessions} />}></Route>
-            <Route path='/newsession' element={<NewSession />}></Route>
+            <Route path='/' element={<MainPage sessions={sessions}/>}></Route>
             <Route path='/:id' element={<ViewSession getAllSessions={getAllSessions} sessions={sessions} />}></Route>
           </Routes>
         </Router>
       </TimerProvider>
-      {/* <Footer /> */}
+      <StartSessionButton />
+    <Footer />
     </div>
   );
 }

@@ -1,0 +1,16 @@
+.DayButtonContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 40%;
+
+}
+.dayButton {
+  width: 150px;
+  height: 150px;
+  margin: 20px;
+}
+.InnerContainer {
+  max-width: 80%;
+  margin: auto auto;
+}

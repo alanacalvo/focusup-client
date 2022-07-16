@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { useTimer, TimerContext } from '../Context/TimerContext';
+import { useTimer, TimerContext } from '../../Context/TimerContext';
 import DurationPicker from 'react-duration-picker';
 import { useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
@@ -8,7 +8,7 @@ import TextField from '@mui/material/TextField';
 import Input from '@mui/material/Input';
 import { ClassNames } from '@emotion/react';
 import { Autocomplete } from '@mui/material';
-import '../assets/Modal.css';
+import './NewSession.scss';
 
 function NewSession({ closeModal }) {
   const navigate = useNavigate();

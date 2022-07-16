@@ -1,6 +1,6 @@
-import '../assets/countdowntimer.css'
+import './CountdownTimer.scss'
 import { useContext } from 'react';
-import { TimerContext } from '../Context/TimerContext';
+import { TimerContext } from '../../Context/TimerContext';
 
 
 
