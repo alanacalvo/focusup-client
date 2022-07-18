@@ -18,7 +18,7 @@ function PostSessionForm() {
   const [initialTodos, setInitialTodos] = useState([])
 
   const fetchOneSession = async () => {
-    const { data } = await axios.get(`http://localhost:5000/${id}`)
+    const { data } = await axios.get(`http://localhost:5000/sessions/${id}`)
     setInitialTodos(data)
   }
   useEffect(() => {
@@ -30,7 +30,7 @@ function PostSessionForm() {
   }
 
   const handleSubmit = () => {
-    axios.post(`http://localhost:5000/${id}/complete`, {
+    axios.post(`http://localhost:5000/sessions/${id}/complete`, {
       postSessionTodos: postSessionDetails.postSessionTodos,
       notes: postSessionDetails.notes,
       colorRating: postSessionDetails.colorRating,

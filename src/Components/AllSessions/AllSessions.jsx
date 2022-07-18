@@ -10,6 +10,7 @@ import PostSessionForm from '../PostSessionForm/PostSessionForm';
 import CountdownTimer from '../CountdownTimer/CountdownTimer';
 import { Modal } from '@mui/material';
 import './sessionContainer.scss';
+import StartSessionButton from '../StartSessionButton/StartSessionButton';
 
 function AllSessions({sessions}) {
   const timer = useContext(TimerContext);
@@ -36,6 +37,7 @@ function AllSessions({sessions}) {
         ? <PostSessionForm />
         : <CountdownTimer />
       }  
+      <StartSessionButton setOpenModal={setOpenModal}/>
     </div>
       </>
   )
