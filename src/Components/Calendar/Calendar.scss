@@ -1,10 +1,17 @@
 .calendarWrapper {
- width: 50%;
- margin: auto auto; 
+  width: 50%;
+  height: 64%;
+  max-height: 100%;
 }
-.calendar {
-  width: 400px;
-  height: 400px;
-  background-color: paleturquoise;
-  margin: auto auto;
+
+.calendarWrapper h2 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.calendar-img {
+  width: 75%;
+  height: 75%;
+  margin-top: 21px;
+  border: 3px solid #EFC7AA;
 }

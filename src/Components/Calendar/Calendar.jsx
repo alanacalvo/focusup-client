@@ -4,7 +4,9 @@ import './Calendar.scss'
 function Calendar() {
   return (
     <div className='calendarWrapper'>
-      <div className='calendar'>Calendar</div>
+      <h2>Schedule A Session</h2>
+      <img src='./calendar-placeholder.png' className='calendar-img' />
+      {/* <div className='calendar'>Calendar</div> */}
     </div>
   )
 }

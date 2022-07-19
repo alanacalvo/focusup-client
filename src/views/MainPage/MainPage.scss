@@ -1,5 +1,10 @@
 .MainPage {
   display: flex;
   flex-direction: row;
-  height: 100vh;
+  height: 100%; // change this to 80 and everything is wonky again !!!
+  width: 100%;
+  margin: auto auto;
+  font-size: 25px;
 }
+
+// want to make button not be in column flex

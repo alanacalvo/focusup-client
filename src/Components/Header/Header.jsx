@@ -1,9 +1,12 @@
 import React from 'react'
+import Logo from '../Logo/Logo'
+import './Header.scss'
 
 function Header() {
   return (
     <div className='header'>
-      <h1>Hey there, user!</h1>
+      <Logo />
+      {/* <h1>Hey there, user!</h1> */}
       </div>
   )
 }

@@ -3,14 +3,24 @@
   flex-direction: row;
   flex-wrap: wrap;
   max-width: 40%;
-
+  max-height: 50%;
+  justify-content: center;
+}
+.DayButtonContainer h2 {
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 .dayButton {
-  width: 150px;
-  height: 150px;
-  margin: 20px;
+  width: 125px;
+  height: 125px;
+  margin: 25px;
+  border-radius: 10px;
+  font-size: 25px;
+  background-color: #1B998B;
+  opacity: 50%;
+  border: 3px solid #ff9b71;
 }
 .InnerContainer {
-  max-width: 80%;
-  margin: auto auto;
+  max-width: 100%;
+  // margin: auto auto;
 }

@@ -13,6 +13,7 @@ import Footer from './Components/Footer/Footer'
 import Login from './views/Login/Login';
 import SignUp from './views/SignUp/SignUp';
 import LandingPage from './views/LandingPage/LandingPage';
+import NavDrawer from './Components/NavDrawer/NavDrawer';
 
 function App() {
   const [loginUser,setLoginUser] = useState({
@@ -33,14 +34,16 @@ function App() {
   return (
     <div className="App">
     <Header />
+    {/* <NavDrawer /> */}
       <TimerProvider>
         <Router>
           <Routes>
             <Route path='/' element={<LandingPage />}></Route>
-            <Route path='/home' 
+            {/* <Route path='/home' 
             element={!loginUser ? <Navigate to="/login" />: <MainPage />}> 
+            </Route> */}
             
-            </Route>
+            <Route path='/home' element={<MainPage getAllSessions={getAllSessions} sessions={sessions} />}></Route>
             <Route path='/:id' element={<ViewSession getAllSessions={getAllSessions} sessions={sessions} />}></Route>
             <Route path='/login' element={<Login setLoginUser={setLoginUser} loginUser={loginUser} />}></Route>
             <Route path='/signup' element={<SignUp />}></Route>
