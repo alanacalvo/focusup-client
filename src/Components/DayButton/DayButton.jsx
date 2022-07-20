@@ -1,19 +1,36 @@
 import React from 'react'
 import './DayButton.scss'
 
-function DayButton() {
+function DayButton({ sessions }) {
 
-  // const timeStampedSessions = () => {
+ // map through all sessions 
+ // const DayNamesArray = []
+ 
+ // sessions.map(item =. DayNamesArr[item.date.getDay()])
+ //sessions.getDay()
+ // if (sessions.createdAt === 1 - 7) {
+  // 
+  //}
+console.log(sessions)
 
-  // }
+
+  const timeStampedSessions = (sessions) => {
+    const DayNamesArr = [
+      'Sunday',
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday'
+    ]
+    sessions.map(item => DayNamesArr[item.date.getDay()])
+  }
 
   return (
     <div className='DayButtonContainer'>
-
-
       <h2>My Sessions</h2>
-
-      <div className='InnerContainer'>
+      <div className='InnerBtnContainer'>
       <button className='dayButton'
         // onClick={(() => 
           

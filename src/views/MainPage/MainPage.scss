@@ -1,10 +1,46 @@
-.MainPage {
+$mint: #92ad94;
+$greyblue: #495867;
+$lighterblue: #79858A;
+$maroon: #31081f;
+$lightermaroon: #833F46;
+$orange: #e08e45;
+$lightorange: #1B998B;
+$plum: #6b0f1a;
+$darkgrey:#303134;
+
+.MainPage1 {
+  display: flex;
+  flex-grow: 1;
+  width: 100%;
+  font-size: 25px;
+  letter-spacing: 3px;
+  font-variant: small-caps;
+  // height:100%;
+  // margin: 5px;
+}
+.container2 { // navdrawer
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  // height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: $lighterblue;
+  padding: 5px;
+  padding-top: 10px;
+  border-right: 2px solid $greyblue;
+  border-left: 2px solid $greyblue;
+  border-radius: 20px;;
+}
+.container3 { // daybutton & calendar
   display: flex;
   flex-direction: row;
-  height: 100%; // change this to 80 and everything is wonky again !!!
-  width: 100%;
-  margin: auto auto;
-  font-size: 25px;
+  flex-grow: 1;
 }
-
-// want to make button not be in column flex
+.containerWrapper {
+  display: flex;
+  // flex-grow: 1;
+  // height: 100%;
+  flex-direction: column;
+  // justify-content: flex-end;
+}

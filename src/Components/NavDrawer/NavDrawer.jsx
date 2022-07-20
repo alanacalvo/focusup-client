@@ -3,12 +3,12 @@ import './NavDrawer.scss'
 
 function NavDrawer() {
   return (
-    <div className='navDrawerContainer'>
-      <h2>Account</h2>
-      <h2>Meals</h2>
-      <h2>Friends</h2>
-      <h2>Settings</h2>
-    </div>
+    <nav className='navDrawerContainer'>
+      <a href='/account'>Account</a>
+      <a href='/settings'>Settings</a>
+      <a href='/connect'>Connect</a>
+      <a href='/mealplan'>Meal Plan</a>
+    </nav>
   )
 }
 

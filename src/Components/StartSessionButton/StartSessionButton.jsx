@@ -4,11 +4,9 @@ import './StartSessionButton.scss'
 function StartSessionButton({ setOpenModal }) {
 
   return (
-    <div className='StartSessionBtnContainer'>   {
-      <div className='StartSessionBtn' onClick={() => setOpenModal(true)}>
-        <h1>Ready to get started, user?</h1>
-        </div>
-    }</div>
+    <button className='StartSessionBtn' onClick={() => setOpenModal(true)}>
+      <h2>Ready to get started, Alana?</h2>
+    </button>
   )
 }
 

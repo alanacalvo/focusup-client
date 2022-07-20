@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import AllSessions from '../../Components/AllSessions/AllSessions';
 
-function Login({ loginUser, setLoginUser }) {
+function Login({ loginUser, setLoginUser, sessions, getAllSessions }) {
   const navigate = useNavigate();
 
   const [user, setUser] = useState({
@@ -51,6 +52,7 @@ function Login({ loginUser, setLoginUser }) {
       <Link to='/'>Back</Link>
       {/* <button
       onClick={() => navigate(-1)}>Back</button> */}
+      <AllSessions getAllSessions={getAllSessions} sessions={sessions}/>
     </div>
   )
 }

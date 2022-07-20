@@ -1,8 +1,17 @@
+$mint: #92ad94;
+$greyblue: #495867;
+$lighterblue: #79858A;
+$maroon: #31081f;
+$lightermaroon: #833F46;
+$orange: #e08e45;
+$lightorange: #1B998B;
+$plum: #6b0f1a;
+
 .sessionContainer {
-  width: 40vw;
+  width: 20vw;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  display: none;
+  // display: none;
   text-align: center;
 }

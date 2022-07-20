@@ -4,7 +4,7 @@ import ViewSession from './views/ViewSession/ViewSession'
 import { TimerProvider } from './Context/TimerContext';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import './App.css'
+import './App.scss'
 import MainPage from './views/MainPage/MainPage';
 import Layout from './Components/Layout/Layout'
 import Header from './Components/Header/Header'
@@ -45,13 +45,13 @@ function App() {
             
             <Route path='/home' element={<MainPage getAllSessions={getAllSessions} sessions={sessions} />}></Route>
             <Route path='/:id' element={<ViewSession getAllSessions={getAllSessions} sessions={sessions} />}></Route>
-            <Route path='/login' element={<Login setLoginUser={setLoginUser} loginUser={loginUser} />}></Route>
+            <Route path='/login' element={<Login setLoginUser={setLoginUser} loginUser={loginUser} getAllSessions={getAllSessions} sessions={sessions} />}></Route>
             <Route path='/signup' element={<SignUp />}></Route>
           </Routes>
         </Router>
       </TimerProvider>
-      <StartSessionButton />
-    <Footer />
+
+    {/* <Footer /> */}
     </div>
   );
 }

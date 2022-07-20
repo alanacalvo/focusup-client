@@ -1,26 +1,45 @@
+$mint: #92ad94;
+$greyblue: #495867;
+$lighterblue: #79858A;
+$maroon: #31081f;
+$lightermaroon: #833F46;
+$orange: #e08e45;
+$lightorange: #AC8968;
+$plum: #6b0f1a;
+$darkgrey:#303134;
+
 .DayButtonContainer {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  max-width: 40%;
-  max-height: 50%;
+  width: 50%;
+  height: 100%;
   justify-content: center;
+  background-color: $lighterblue;
+  // margin: auto auto;
+  border-right: 2px solid $greyblue;
+  border-left: 2px solid $greyblue;
+  border-radius: 15px;
 }
 .DayButtonContainer h2 {
   margin-top: 5px;
   margin-bottom: 5px;
+  text-decoration: solid underline $greyblue;
+  text-underline-offset: 5px;
+  text-shadow: 1px 1px $darkgrey;
 }
 .dayButton {
-  width: 125px;
-  height: 125px;
+  width: 150px;
+  height: 150px;
   margin: 25px;
   border-radius: 10px;
   font-size: 25px;
-  background-color: #1B998B;
+  background-color: $orange;
   opacity: 50%;
-  border: 3px solid #ff9b71;
+
 }
-.InnerContainer {
-  max-width: 100%;
-  // margin: auto auto;
+.InnerBtnContainer {
+  // max-width: 100%;
+  height: 100%;
+
 }

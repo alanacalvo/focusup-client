@@ -1,16 +1,1 @@
-* {
-  border: 1px solid #EFC7AA;
-  border-radius: 5px;
-  color: #EFC7AA;
-  font-family: 'Abel', sans-serif;
-}
-.App {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: row;
-  height: 100vh;
-  color: #ff9b71; 
-  background-color: #2d3047;
 
-}

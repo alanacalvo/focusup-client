@@ -1,7 +1,35 @@
+$mint: #92ad94;
+$greyblue: #495867;
+$lighterblue: #79858A;
+$maroon: #31081f;
+$lightermaroon: #833F46;
+$orange: #e08e45;
+$lightorange: #AC8968;
+$plum: #6b0f1a;
+
 .navDrawerContainer {
-  width: 15%;
-  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: $lighterblue;
+  padding: 5px;
+  padding-top: 10px;
+  border-radius: 20px;;
 }
-.navDrawerContainer h2 {
+.navDrawerContainer a {
   font-size: 25px;
+  text-decoration: none;
+  color: $lightermaroon;
+  font-size: 40px;
+  font-weight: bold;
+  font-variant: small-caps;
+  letter-spacing: 5px;
+  line-height: 60px;
+  transition-duration: 0.4s;
+  text-shadow: 1px 1px $maroon;
+}
+.navDrawerContainer a:hover {
+  background-color: $greyblue;
+  border-radius: 5px;
+  text-decoration: underline double $lightermaroon;
+  text-underline-offset: 5px;;
 }

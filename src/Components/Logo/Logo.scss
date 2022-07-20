@@ -1,5 +1,22 @@
+$mint: #92ad94;
+$greyblue: #495867;
+$lighterblue: #79858A;
+$maroon: #31081f;
+$lightermaroon: #833F46;
+$orange: #e08e45;
+$lightorange: #1B998B;
+$plum: #6b0f1a;
+
 .logo h1 {
   font-size: 55px;
-  margin: 0;
-  padding: 5px;
+  color: $lightermaroon;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-decoration: overline $orange;
+  // text-decoration-color: $orange;
+  // background-color: ;
+  text-shadow: 2px 2px $maroon;
+  margin: 10px;
+  padding: 10px;
+  border: none;
 }
