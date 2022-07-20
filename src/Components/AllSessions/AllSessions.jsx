@@ -10,7 +10,6 @@ import StartSessionButton from '../StartSessionButton/StartSessionButton';
 
 function AllSessions({sessions}) {
   const timer = useContext(TimerContext);
-  const [openModal, setOpenModal] = useState(false)
 
   if (sessions.length === 0) {
     return <h1>no sessions</h1>

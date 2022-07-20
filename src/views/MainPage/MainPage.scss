@@ -1,5 +1,6 @@
 $mint: #92ad94;
 $greyblue: #495867;
+$mediumblue: #556677;
 $lighterblue: #79858A;
 $maroon: #31081f;
 $lightermaroon: #833F46;
@@ -25,7 +26,7 @@ $darkgrey:#303134;
   // height: 100%;
   display: flex;
   flex-direction: column;
-  background-color: $lighterblue;
+  background-color: $mediumblue;
   padding: 5px;
   padding-top: 10px;
   border-right: 2px solid $greyblue;
@@ -43,4 +44,8 @@ $darkgrey:#303134;
   // height: 100%;
   flex-direction: column;
   // justify-content: flex-end;
+}
+.container4 {
+  display: flex;
+  
 }
