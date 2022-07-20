@@ -37,7 +37,7 @@ export const TimerProvider = ({ children }) => {
   useEffect(() => {
     if (secondsRemaining) {
       interval()
-      // console.log(secondsRemaining)
+      console.log(secondsRemaining)
     }
   }, [secondsRemaining])
   
