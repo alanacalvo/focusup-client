@@ -8,14 +8,17 @@ export function useTimer() {
   return useContext(TimerContext)
 }
 
-// export function TimerUpdateContext() {
-//   return useContext(TimerContext)
-// }
-
 export const TimerProvider = ({ children }) => {
-  const [timer, setTimer] = useState({ hours: 0, minutes: 0 });
-  const [secondsRemaining, setSecondsRemaining] = useState(0)
+  const [timer, setTimer] = useState({ hours: 0, minutes: 0, seconds: 0 });
+  const [secondsRemaining, setSecondsRemaining] = useState()
   const [sessionStarted, setSessionStarted] = useState();
+  const [hours, setHours] = useState()
+  const [minutes, setMinutes] = useState()
+  const [seconds, setSeconds] = useState()
+
+
+  const timeLeft = convertHMS(secondsRemaining)
+
 
   function convertHMS(value) {
     const sec = parseInt(value, 10); // convert value to number if it's string
@@ -36,8 +39,9 @@ export const TimerProvider = ({ children }) => {
 
   useEffect(() => {
     if (secondsRemaining) {
+      setTimer(timeLeft)
       interval()
-      console.log(secondsRemaining)
+console.log(timer)
     }
   }, [secondsRemaining])
   
@@ -53,7 +57,7 @@ export const TimerProvider = ({ children }) => {
   // };
 
   return (
-    <TimerContext.Provider value={{timer, setTimer, setSecondsRemaining, secondsRemaining, sessionStarted, setSessionStarted}}>
+    <TimerContext.Provider value={{ hours, setHours, minutes, setMinutes, setSecondsRemaining, secondsRemaining, sessionStarted, setSessionStarted}}>
       {/* <TimerUpdateContext.Provider value={}> */}
         {children}
       {/* </TimerUpdateContext.Provider> */}

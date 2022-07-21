@@ -10,8 +10,7 @@ import './NewSession.scss';
 
 function NewSession({ closeModal }) {
   const navigate = useNavigate();
-  const { timer, setTimer,
-    setSecondsRemaining, setSessionStarted } = useTimer(TimerContext);
+  const { setHours, hours, setMinutes, minutes, setSecondsRemaining, seconds, setSessionStarted } = useTimer(TimerContext);
 
   const initialDetails = {
     name: '',
@@ -37,7 +36,7 @@ function NewSession({ closeModal }) {
   };
 
   const handleSubmit = () => {
-    axios.post('http://localhost:5000/NewSession', {
+    axios.post('http://localhost:5000/sessions/NewSession', {
       name: details.name,
       type: details.type,
       preSessionTodos: details.preSessionTodos,
@@ -49,18 +48,12 @@ function NewSession({ closeModal }) {
       .then(res => {
         console.log(res.data)
         const hours = duration.hours;
-        // console.log(hours)
         const minutes = duration.minutes;
-        // console.log(minutes)
         const timerToSecs = (hours * 60 * 60 + minutes * 60)
-        console.log(timerToSecs, 'toms')
-        const total = timerToSecs
-        setTimer(duration)
         setSecondsRemaining(timerToSecs)
         setSessionStarted(true)
         setDetails(initialDetails)
-        console.log(timer)
-        navigate('/')
+        // navigate('/')
       })
   }
 

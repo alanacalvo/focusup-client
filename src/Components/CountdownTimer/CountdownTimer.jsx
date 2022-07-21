@@ -1,14 +1,14 @@
 import './CountdownTimer.scss'
 import { useContext } from 'react';
-import { TimerContext } from '../../Context/TimerContext';
+import { TimerContext, useTimer } from '../../Context/TimerContext';
 
 
 
 function CountdownTimer() {
-  const timer = useContext(TimerContext);
+  const {timer} = useTimer(TimerContext);
   return (
     <div className='countdown-timer'>
-      <h2>{timer.secondsRemaining}</h2>
+      <h2>{timer}</h2>
     </div>
   )
 }
