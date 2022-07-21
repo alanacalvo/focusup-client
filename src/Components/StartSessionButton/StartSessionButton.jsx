@@ -6,20 +6,17 @@ import CountdownTimer from '../CountdownTimer/CountdownTimer'
 import './StartSessionButton.scss'
 
 function StartSessionButton() {
-  const [openModal, setOpenModal] = useState(false)
-  const { timer, setTimer,
-    setSecondsRemaining, setSessionStarted } = useTimer(TimerContext);
+  const [openNewSessionModal, setOpenNewSessionModal] = useState(false)
+  // const { timer, setTimer,
+  //   setSecondsRemaining, setSessionStarted } = useTimer(TimerContext);
 
   return (
     <>
-      <button className='StartSessionBtn' onClick={() => setOpenModal(true)}>
+      <button className='StartSessionBtn' onClick={() => setOpenNewSessionModal(true)}>
         <h2>Ready to get started, Alana?</h2>
       </button>
-      {openModal && <NewSession closeModal={setOpenModal} />}
-      {timer === 0
-        ? <PostSessionForm />
-        : <CountdownTimer />
-      }
+      {openNewSessionModal && <NewSession setOpenNewSessionModal={setOpenNewSessionModal} />}
+
     </>
   )
 }

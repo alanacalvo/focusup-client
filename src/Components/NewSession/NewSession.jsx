@@ -7,22 +7,27 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Input from '@mui/material/Input';
 import './NewSession.scss';
+import PostSessionForm from '../PostSessionForm/PostSessionForm';
+import CountdownTimer from '../CountdownTimer/CountdownTimer';
 
-function NewSession({ closeModal }) {
+function NewSession({ setOpenNewSessionModal }) {
   const navigate = useNavigate();
-  const { setHours, hours, setMinutes, minutes, setSecondsRemaining, seconds, setSessionStarted } = useTimer(TimerContext);
+  const { timer, setSecondsRemaining } = useTimer(TimerContext);
+  // const [sessionStarted, setSessionStarted] = useState();
+  const [openTimerModal, setOpenTimerModal] = useState(false);
 
   const initialDetails = {
     name: '',
     type: '',
     length: {
       hours: '00',
-      minutes: '00'
+      minutes: '00',
+      seconds: '00'
     },
     preSessionTodos: ''
   }
 
-  const [duration, setDuration] = useState({ hours: '00', minutes: '00' })
+  const [duration, setDuration] = useState({ hours: '00', minutes: '00', seconds: '00' })
   const [details, setDetails] = useState(initialDetails);
 
   const handleChange = (e) => {
@@ -32,7 +37,6 @@ function NewSession({ closeModal }) {
 
   const onChange = (duration) => {
     setDuration(duration)
-    console.log(duration)
   };
 
   const handleSubmit = () => {
@@ -42,20 +46,23 @@ function NewSession({ closeModal }) {
       preSessionTodos: details.preSessionTodos,
       length: {
         hours: duration.hours,
-        minutes: duration.minutes
+        minutes: duration.minutes,
+        seconds: duration.seconds
       },
     })
       .then(res => {
+        // need to close modal
+        // need to open timer modal
+        // reset initial details
         console.log(res.data)
-        const hours = duration.hours;
-        const minutes = duration.minutes;
-        const timerToSecs = (hours * 60 * 60 + minutes * 60)
+        const timerToSecs = (duration.hours * 60 * 60 + duration.minutes * 60)
         setSecondsRemaining(timerToSecs)
-        setSessionStarted(true)
+        // setSessionStarted(true)        
         setDetails(initialDetails)
-        // navigate('/')
+        // navigate('/home') // need on click close modal function
       })
   }
+
 
   return (
     <div className='modalContainer'>
@@ -70,7 +77,7 @@ function NewSession({ closeModal }) {
         }}
       >
         <div className='closeModal'>
-          <button onClick={() => closeModal(false)}> X </button>
+          <button onClick={() => setOpenNewSessionModal(false)}> X </button>
         </div>
         <label htmlFor="name">Session Name: </label>
         <Input
@@ -96,7 +103,7 @@ function NewSession({ closeModal }) {
         <label htmlFor="length">Session Length: </label>
         <div className='duration'>
           <DurationPicker
-            initialDuration={{ hours: '00', minutes: '00' }}
+            initialDuration={{ hours: '00', minutes: '00', seconds: '00' }}
             id="length"
             onChange={onChange}/>
         </div>
@@ -116,10 +123,16 @@ function NewSession({ closeModal }) {
       />
       <br></br> */}
         <button
+          onClick={(e) => {
+            // e.preventDefault()
+            setOpenTimerModal(true)
+            // setOpenNewSessionModal(false) // this messes with the submit
+          }}
           className='getStartedBtn'
           type="submit"
         >Let's get started!</button>
       </Box>
+      {openTimerModal && <CountdownTimer />}
     </div>
   )
 }

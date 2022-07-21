@@ -2,65 +2,47 @@ import { useEffect } from 'react';
 import { React, createContext, useContext, useState } from 'react';
 
 export const TimerContext = createContext();
-// const TimerUpdateContext = createContext();
 
 export function useTimer() {
   return useContext(TimerContext)
 }
 
 export const TimerProvider = ({ children }) => {
-  const [timer, setTimer] = useState({ hours: 0, minutes: 0, seconds: 0 });
+  const [timer, setTimer] = useState();
   const [secondsRemaining, setSecondsRemaining] = useState()
-  const [sessionStarted, setSessionStarted] = useState();
-  const [hours, setHours] = useState()
-  const [minutes, setMinutes] = useState()
-  const [seconds, setSeconds] = useState()
 
 
-  const timeLeft = convertHMS(secondsRemaining)
-
-
-  function convertHMS(value) {
-    const sec = parseInt(value, 10); // convert value to number if it's string
-    let hours   = Math.floor(sec / 3600); // get hours
-    let minutes = Math.floor((sec - (hours * 3600)) / 60); // get minutes
-    let seconds = sec - (hours * 3600) - (minutes * 60); //  get seconds
-    // add 0 if value < 10; Example: 2 => 02
-    if (hours   < 10) {hours   = "0"+hours;}
-    if (minutes < 10) {minutes = "0"+minutes;}
-    if (seconds < 10) {seconds = "0"+seconds;}
-    return hours+':'+minutes+':'+seconds; // Return is HH : MM : SS
+function convertHMS(value) {
+  const sec = parseInt(value, 10); // convert value to number if it's string
+  let hours   = Math.floor(sec / 3600); // get hours
+  let minutes = Math.floor((sec - (hours * 3600)) / 60); // get minutes
+  let seconds = sec - (hours * 3600) - (minutes * 60); //  get seconds
+  // add 0 if value < 10; Example: 2 => 02
+  if (hours   < 10) {hours   = "0"+hours;}
+  if (minutes < 10) {minutes = "0"+minutes;}
+  if (seconds < 10) {seconds = "0"+seconds;}
+  // if (seconds === 0) {seconds = "00"}
+  return hours+':'+minutes+':'+seconds; // Return is HH : MM : SS
 }
-  const interval = () => setTimeout(() => {
-    if (secondsRemaining) {
-      setSecondsRemaining(secondsRemaining - 1)
-    }
-  }, 1000)
+const interval = () => setTimeout(() => {
+  if (secondsRemaining) {
+    setSecondsRemaining(secondsRemaining - 1)
+  } 
+}, 1000)
 
-  useEffect(() => {
-    if (secondsRemaining) {
-      setTimer(timeLeft)
+const timerDisplay = convertHMS(secondsRemaining)
+useEffect(() => {
+    if (timerDisplay) {
+      // const timerdddd = timerDisplay -1
+      setTimer(timerDisplay)
+      console.log(timer)
       interval()
-console.log(timer)
     }
   }, [secondsRemaining])
   
-  // const [duration, setDuration] = useState({ hours: '00', minutes: '00' })
-
-  // const onChange = (duration) => {
-  //   setDuration(
-  //     (duration.hours > 9 ? duration.hours : '0' + duration.hours) + ':' +
-  //     (duration.minutes > 9 ? duration.minutes : '0' + duration.minutes)
-  //     )
-  //     console.log(duration)
-  //   // .then( RESET DURATION PICKER )
-  // };
-
   return (
-    <TimerContext.Provider value={{ hours, setHours, minutes, setMinutes, setSecondsRemaining, secondsRemaining, sessionStarted, setSessionStarted}}>
-      {/* <TimerUpdateContext.Provider value={}> */}
+    <TimerContext.Provider value={{ timer, setSecondsRemaining, secondsRemaining }}>
         {children}
-      {/* </TimerUpdateContext.Provider> */}
     </TimerContext.Provider>
   )
 }
