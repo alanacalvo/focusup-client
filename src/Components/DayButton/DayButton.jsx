@@ -79,7 +79,7 @@ return (
     <h2>My Sessions</h2>
     <div className='InnerBtnContainer'>
 
-  <CalendarHeatmap 
+  {/* <CalendarHeatmap 
     startDate={new Date('2022-04-01')}
     endDate={new Date('2012-06-01')}
     values={[
@@ -88,7 +88,7 @@ return (
       { date: '2016-01-30', count: 38 },
     ]}
     horizontal={true}
-  />
+  /> */}
 
    {openModal && <Sun closeModal={setOpenModal} sun={sun}/>} 
       <button 
@@ -117,7 +117,7 @@ return (
         <p>Tuesday</p>
       </button>
 
-      {/*{openModal && <Wed closeModal={setOpenModal} wed={wed}/>} 
+      {openModal && <Wed closeModal={setOpenModal} wed={wed}/>} 
       <button 
         className='dayButton' 
         onClick={() => {
@@ -151,7 +151,7 @@ return (
           setOpenModal(true);
           getDayValue();}}>
         <p>Saturday</p>
-      </button> */}
+      </button> 
     </div>
   </div>
 )

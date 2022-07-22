@@ -10,11 +10,11 @@ import './NewSession.scss';
 import PostSessionForm from '../PostSessionForm/PostSessionForm';
 import CountdownTimer from '../CountdownTimer/CountdownTimer';
 
-function NewSession({ setOpenNewSessionModal }) {
+function NewSession({ setOpenNewSessionModal, setOpenTimerModal }) {
   const navigate = useNavigate();
   const { timer, setSecondsRemaining } = useTimer(TimerContext);
   // const [sessionStarted, setSessionStarted] = useState();
-  const [openTimerModal, setOpenTimerModal] = useState(false);
+ 
 
   const initialDetails = {
     name: '',
@@ -51,15 +51,10 @@ function NewSession({ setOpenNewSessionModal }) {
       },
     })
       .then(res => {
-        // need to close modal
-        // need to open timer modal
-        // reset initial details
         console.log(res.data)
         const timerToSecs = (duration.hours * 60 * 60 + duration.minutes * 60)
-        setSecondsRemaining(timerToSecs)
-        // setSessionStarted(true)        
-        setDetails(initialDetails)
-        // navigate('/home') // need on click close modal function
+        setSecondsRemaining(timerToSecs)  
+        setOpenNewSessionModal(false)  
       })
   }
 
@@ -124,15 +119,12 @@ function NewSession({ setOpenNewSessionModal }) {
       <br></br> */}
         <button
           onClick={(e) => {
-            // e.preventDefault()
             setOpenTimerModal(true)
-            // setOpenNewSessionModal(false) // this messes with the submit
           }}
           className='getStartedBtn'
           type="submit"
         >Let's get started!</button>
       </Box>
-      {openTimerModal && <CountdownTimer />}
     </div>
   )
 }

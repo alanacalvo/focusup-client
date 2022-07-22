@@ -35,7 +35,7 @@ useEffect(() => {
     if (timerDisplay) {
       // const timerdddd = timerDisplay -1
       setTimer(timerDisplay)
-      console.log(timer)
+      // console.log(timer)
       interval()
     }
   }, [secondsRemaining])
