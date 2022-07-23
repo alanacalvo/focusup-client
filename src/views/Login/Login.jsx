@@ -23,6 +23,7 @@ function Login({ loginUser, setLoginUser, sessions, getAllSessions }) {
           console.log(res.data)
           console.log(user)
           setLoginUser(res.data.user)
+          localStorage.setItem('user', JSON.stringify(res.data.user))
           console.log(loginUser)
           navigate('/home')
         })

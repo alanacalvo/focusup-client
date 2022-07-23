@@ -10,11 +10,9 @@ import './NewSession.scss';
 import PostSessionForm from '../PostSessionForm/PostSessionForm';
 import CountdownTimer from '../CountdownTimer/CountdownTimer';
 
-function NewSession({ setOpenNewSessionModal, setOpenTimerModal }) {
+function NewSession({ setOpenNewSessionModal, setOpenTimerModal, setCurrentSessionId }) {
   const navigate = useNavigate();
-  const { timer, setSecondsRemaining } = useTimer(TimerContext);
-  // const [sessionStarted, setSessionStarted] = useState();
- 
+  const { setActive, setSecondsRemaining } = useTimer(TimerContext);
 
   const initialDetails = {
     name: '',
@@ -24,38 +22,67 @@ function NewSession({ setOpenNewSessionModal, setOpenTimerModal }) {
       minutes: '00',
       seconds: '00'
     },
-    preSessionTodos: ''
+    preSessionTodos: []
   }
 
   const [duration, setDuration] = useState({ hours: '00', minutes: '00', seconds: '00' })
   const [details, setDetails] = useState(initialDetails);
+  const [todo, setTodo] = useState('')
+  const [name, setName] = useState('')
+  const [type, setType] = useState('')
+  const [color, setColor] = useState('')
 
-  const handleChange = (e) => {
-    setDetails({ ...details, [e.target.id]: e.target.value })
-    console.log(details)
-  }
-
-  const onChange = (duration) => {
+  const handleChange = (duration) => {
     setDuration(duration)
   };
 
+  const handleAddToDo = (e) => {
+    e.preventDefault()
+    const temp = details;
+    temp.preSessionTodos.push({ todo: todo });
+    setDetails(temp);
+    setTodo('');
+  }
+  console.log('de', details.preSessionTodos)
   const handleSubmit = () => {
-    axios.post('http://localhost:5000/sessions/NewSession', {
-      name: details.name,
-      type: details.type,
-      preSessionTodos: details.preSessionTodos,
+    console.log('color', color)
+    const data = {
+      name: name,
+      type: type,
+      preSessionTodos: todo,
       length: {
         hours: duration.hours,
         minutes: duration.minutes,
         seconds: duration.seconds
       },
-    })
+      colorRating: 'red'
+    }
+    axios.post('http://localhost:5000/sessions/NewSession', data)
       .then(res => {
-        console.log(res.data)
+        console.log(res.data._id)
         const timerToSecs = (duration.hours * 60 * 60 + duration.minutes * 60)
-        setSecondsRemaining(timerToSecs)  
-        setOpenNewSessionModal(false)  
+        setSecondsRemaining(3)
+        setOpenNewSessionModal(false)
+        setActive(true)
+        setCurrentSessionId(res.data._id)
+        setDetails(data)
+        setColor('')
       })
+  }
+
+  // const renderToDoList = () => {
+  //   return (
+  //     <div>
+  //       {details.preSessionTodos && (
+  //         details.preSessionTodos.map((item) => {
+  //           <h1 style={{backgroundColor: "blue"}}>{item.todo}</h1>
+  //         })
+  //       )}
+  //     </div>
+  //   )
+  // }
+  const handleColorChange = (e) => {
+    setColor(e.target.value)
   }
 
 
@@ -80,16 +107,16 @@ function NewSession({ setOpenNewSessionModal, setOpenTimerModal }) {
           label='Session Name'
           placeholder='Session Name'
           color='secondary'
-          onChange={handleChange}
-          value={details.name}
-          id='name'
+          onChange={(e) => setName(e.target.value)}
+          value={name}
+          name='name'
         />
         <br></br>
         <select
           type="text"
-          id="type"
-          value={details.type}
-          onChange={handleChange}
+          name="type"
+          onChange={(e) => setType(e.target.value)}
+          value={type}
         >
           <option>Pomodoro</option>
           <option>Regular</option>
@@ -99,31 +126,54 @@ function NewSession({ setOpenNewSessionModal, setOpenTimerModal }) {
         <div className='duration'>
           <DurationPicker
             initialDuration={{ hours: '00', minutes: '00', seconds: '00' }}
-            id="length"
-            onChange={onChange}/>
+            name="length"
+            onChange={handleChange} />
         </div>
         <br></br>
-        <label htmlFor="length">Session Length: </label>
+        <label htmlFor="length">To Do List: </label>
         <Input
           label='To Do List'
           placeholder='To Do List'
           color='secondary'
-          onChange={handleChange}
-          value={details.preSessionTodos}
-          id='todos'
+          onChange={(e) => setTodo(e.target.value)}
+          // on keypress map through todos
+          value={todo}
+          name='todos'
+        />
+        <Input
+          label='color'
+          placeholder='color'
+          color='secondary'
+          onChange={handleColorChange}
+          // on keypress map through todos
+          value={color}
+          name='colorRating'
         />
         <br></br>
         {/* <Autocomplete
       id='todos'
       />
       <br></br> */}
+
         <button
-          onClick={(e) => {
+          onClick={() => {
             setOpenTimerModal(true)
           }}
           className='getStartedBtn'
           type="submit"
         >Let's get started!</button>
+        {/* <button
+          onClick={(e) => {
+            handleAddToDo(e)
+          }}
+          className='getStartedBtn'
+          type="submit"
+        >Test</button>
+        <div>
+          {details.preSessionTodos.length > 0 && (
+            renderToDoList()
+          )}
+        </div> */}
       </Box>
     </div>
   )

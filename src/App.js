@@ -16,10 +16,7 @@ import LandingPage from './views/LandingPage/LandingPage';
 import NavDrawer from './Components/NavDrawer/NavDrawer';
 
 function App() {
-  const [loginUser,setLoginUser] = useState({
-    email: '',
-    password: ''
-  })
+  const [loginUser,setLoginUser] = useState(null)
   const [sessions, setSessions] = useState([]);
 
   const getAllSessions = async () => {
@@ -31,6 +28,15 @@ function App() {
     console.log(sessions)
   }, []);
 
+  useEffect(() => {
+    const userJSON = localStorage.getItem('user')
+    console.log(userJSON)
+    if (userJSON) {
+      const user = JSON.parse(userJSON)
+      setLoginUser(user)
+    }
+  },[])
+
   return (
     <div className="App">
 
@@ -40,13 +46,14 @@ function App() {
         <Router>
           <Routes>
             <Route path='/' element={<LandingPage />}></Route>
-            {/* <Route path='/home' 
-            element={!loginUser ? <Navigate to="/login" />: <MainPage />}> 
-            </Route> */}
+            <Route path='/home' 
+            element={!loginUser ? <Navigate to="/login" /> : <MainPage onLogout={() => {setLoginUser(null)}} getAllSessions={getAllSessions} sessions={sessions}/>}> 
+            </Route>
             
-            <Route path='/home' element={<MainPage getAllSessions={getAllSessions} sessions={sessions} />}></Route>
+            {/* <Route path='/home' element={<MainPage getAllSessions={getAllSessions} sessions={sessions} />}></Route> */}
             <Route path='/:id' element={<ViewSession getAllSessions={getAllSessions} sessions={sessions} />}></Route>
-            <Route path='/login' element={<Login setLoginUser={setLoginUser} loginUser={loginUser} getAllSessions={getAllSessions} sessions={sessions} />}></Route>
+            
+            <Route path='/login' element={loginUser ? <Navigate to='/home' /> : <Login setLoginUser={setLoginUser} loginUser={loginUser} getAllSessions={getAllSessions} sessions={sessions} />}></Route>
             <Route path='/signup' element={<SignUp />}></Route>
           </Routes>
         </Router>

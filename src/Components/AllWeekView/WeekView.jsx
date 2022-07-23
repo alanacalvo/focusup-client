@@ -1,8 +1,6 @@
-import './AllSessions.scss';
-import 'react-calendar-heatmap/dist/styles.css';
+import './WeekView.scss';
 
-function AllSessions({ sessions }) {
-
+function WeekView({ sessions }) {
   if (sessions.length === 0) {
     return <h1>no sessions</h1>
   }
@@ -11,21 +9,7 @@ function AllSessions({ sessions }) {
     <>
       <div class="graph">
         <ul class="months">
-          <li>Jan</li>
-          <li>Feb</li>
-          <li>Mar</li>
-          <li>Apr</li>
-          <li>May</li>
-          <li>Jun</li>
-          <li>Jul</li>
-          <li>Aug</li>
-          <li>Sep</li>
-          <li>Oct</li>
-          <li>Nov</li>
-          <li>Dec</li>
-        </ul>
-        <ul class="days">
-          <li>Sun</li>
+        <li>Sun</li>
           <li>Mon</li>
           <li>Tue</li>
           <li>Wed</li>
@@ -33,6 +17,15 @@ function AllSessions({ sessions }) {
           <li>Fri</li>
           <li>Sat</li>
         </ul>
+        {/* <ul class="days">
+          <li>Sun</li>
+          <li>Mon</li>
+          <li>Tue</li>
+          <li>Wed</li>
+          <li>Thu</li>
+          <li>Fri</li>
+          <li>Sat</li>
+        </ul> */}
         <ul className='squares'>
           {sessions ? sessions.map((session, i) => {
             return (
@@ -50,4 +43,4 @@ function AllSessions({ sessions }) {
   )
 }
 
-export default AllSessions
+export default WeekView

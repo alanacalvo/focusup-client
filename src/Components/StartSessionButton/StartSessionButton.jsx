@@ -5,7 +5,7 @@ import PostSessionForm from '../PostSessionForm/PostSessionForm'
 import CountdownTimer from '../CountdownTimer/CountdownTimer'
 import './StartSessionButton.scss'
 
-function StartSessionButton({setOpenTimerModal}) {
+function StartSessionButton({setOpenTimerModal, setCurrentSessionId }) {
   const [openNewSessionModal, setOpenNewSessionModal] = useState(false)
 
   return (
@@ -13,7 +13,9 @@ function StartSessionButton({setOpenTimerModal}) {
       <button className='StartSessionBtn' onClick={() => setOpenNewSessionModal(true)}>
         <h2>Ready to get started, Alana?</h2>
       </button>
-      {openNewSessionModal && <NewSession setOpenNewSessionModal={setOpenNewSessionModal}
+      {openNewSessionModal && <NewSession 
+      setCurrentSessionId={setCurrentSessionId}
+      setOpenNewSessionModal={setOpenNewSessionModal}
       setOpenTimerModal={setOpenTimerModal} />}
     </>
   )

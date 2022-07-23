@@ -1,7 +1,6 @@
 import './AllSessions.scss';
-import 'react-calendar-heatmap/dist/styles.css';
 
-function AllSessions({ sessions }) {
+function YearView({ sessions }) {
 
   if (sessions.length === 0) {
     return <h1>no sessions</h1>
@@ -37,7 +36,6 @@ function AllSessions({ sessions }) {
           {sessions ? sessions.map((session, i) => {
             return (
               <li key={i}>
-                {/* <SessionBox session={session} /> */}
                 {session.colorRating}
               </li>
             )
@@ -50,4 +48,4 @@ function AllSessions({ sessions }) {
   )
 }
 
-export default AllSessions
+export default YearView

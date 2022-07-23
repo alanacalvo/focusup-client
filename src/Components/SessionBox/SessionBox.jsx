@@ -6,8 +6,8 @@ function SessionBox({ session }) {
   const navigate = useNavigate(); 
 
   return (
-    <div className='sessionBox' onClick={() => navigate(`/${session._id}`)}>
-      <span>{session.name}</span>
+    <div onClick={() => navigate(`/${session._id}`)}>
+      {session.name}
     </div>
    )
 }
