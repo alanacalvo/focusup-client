@@ -63,10 +63,10 @@ function MonthView({ sessions }) {
             sessions ? sessions.map((session, i) => {
               return (
                 <li 
-                style={{backgroundColor: session.colorRating}}
+                style={{backgroundColor: session.notes}}
                 key={i} 
                 onClick={() => navigate(`/${session._id}`)}>
-                  {session.colorRating}
+                  {/* {session.colorRating} */}
                 </li>
               )
             })

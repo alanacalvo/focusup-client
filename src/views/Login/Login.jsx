@@ -53,7 +53,7 @@ function Login({ loginUser, setLoginUser, sessions, getAllSessions }) {
       <Link to='/'>Back</Link>
       {/* <button
       onClick={() => navigate(-1)}>Back</button> */}
-      <AllSessions getAllSessions={getAllSessions} sessions={sessions}/>
+      {/* <AllSessions getAllSessions={getAllSessions} sessions={sessions}/> */}
     </div>
   )
 }

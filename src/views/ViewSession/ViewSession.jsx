@@ -28,10 +28,9 @@ function ViewSession({getAllSessions}) {
   return (
     <div>
       <p>{session.name}</p>
-      {/* <p>{session.todos}</p> */}
-      {/* <p>{session.length}</p> */}
-      {/* <p>{session.type}</p> */}
-      {/* <form > */}
+      <p>{session.todos}</p>
+      <p>{session.length}</p>
+      <p>{session.type}</p>
       <button
       onClick={() => navigate(-1)}>Back</button>
       <button 
@@ -39,7 +38,6 @@ function ViewSession({getAllSessions}) {
       onClick={(e) => handleRemove(e)} // not working.. can I only use navigate once per page?
       >Delete</button>
       
-      {/* </form> */}
     </div>
   )
 }
