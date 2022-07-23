@@ -53,7 +53,7 @@ function App() {
             {/* <Route path='/home' element={<MainPage getAllSessions={getAllSessions} sessions={sessions} />}></Route> */}
             <Route path='/:id' element={<ViewSession getAllSessions={getAllSessions} sessions={sessions} />}></Route>
             
-            <Route path='/login' element={loginUser ? <Navigate to='/home' /> : <Login setLoginUser={setLoginUser} loginUser={loginUser} getAllSessions={getAllSessions} sessions={sessions} />}></Route>
+            <Route path='/login' element={loginUser ? <Navigate to='/home' /> : <Login setLoginUser={setLoginUser} loginUser={loginUser}/>}></Route>
             <Route path='/signup' element={<SignUp />}></Route>
           </Routes>
         </Router>
