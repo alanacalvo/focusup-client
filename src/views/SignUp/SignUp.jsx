@@ -23,7 +23,7 @@ function SignUp() {
       signUp.lastName && 
       signUp.email && 
       signUp.password === signUp.confirmPassword) {
-      axios.post('http://localhost:5000/users', {
+      axios.post(`${process.env.REACT_APP_BASE_URL}/users`, {
         firstName: signUp.firstName,
         lastName: signUp.lastName,
         email: signUp.email,

@@ -12,13 +12,13 @@ function Login({ loginUser, setLoginUser, sessions, getAllSessions }) {
   })
 
   const handleChange = (e) => {
-    setUser({ ...user, [e.target.id]: e.target.value});
+    setUser({ ...user, [e.target.id]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault()
     if (user.email && user.password)
-      axios.post('http://localhost:5000/users/login', user)
+      axios.post(`${process.env.REACT_APP_BASE_URL}/users/login`, user)
         .then(res => {
           console.log(res.data)
           console.log(user)
@@ -27,25 +27,25 @@ function Login({ loginUser, setLoginUser, sessions, getAllSessions }) {
           console.log(loginUser)
           navigate('/home')
         })
-    }
+  }
 
   return (
     <div>
-     <h1>Log in</h1>
+      <h1>Log in</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="email">Email Address:</label>
-        <input type="text" id="email" 
+        <input type="text" id="email"
           onChange={handleChange}
           value={user.email}
-          required/>
+          required />
 
         <label htmlFor="password">Password</label>
-        <input 
+        <input
           type="password"
-          id="password" 
-          onChange={handleChange} 
+          id="password"
+          onChange={handleChange}
           value={user.password}
-          required/>
+          required />
 
         <button type="submit">Login</button>
       </form>

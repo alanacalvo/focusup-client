@@ -31,7 +31,7 @@ function PostSessionForm({ session, currentSessionId }) {
 
   const fetchOneSession = async () => {
     console.log(currentSessionId)
-    const { data } = await axios.get(`http://localhost:5000/sessions/${currentSessionId}`)
+    const { data } = await axios.get(`${process.env.REACT_APP_BASE_URL}/sessions/${currentSessionId}`)
     console.log(data)
   }
   useEffect(() => {
@@ -43,7 +43,7 @@ function PostSessionForm({ session, currentSessionId }) {
   }
 
   const handleSubmit = async () => {
-    await axios.put(`http://localhost:5000/sessions/${currentSessionId}`, {
+    await axios.put(`${process.env.REACT_APP_BASE_URL}/sessions/${currentSessionId}`, {
       postSessionTodos: postSessionDetails.postSessionTodos,
       notes: postSessionDetails.notes,
       colorRating: postSessionDetails.colorRating,

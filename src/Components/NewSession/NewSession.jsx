@@ -57,7 +57,7 @@ function NewSession({ setOpenNewSessionModal, setOpenTimerModal, setCurrentSessi
       },
       colorRating: 'red'
     }
-    axios.post('http://localhost:5000/sessions/NewSession', data)
+    axios.post(`${process.env.REACT_APP_BASE_URL}/sessions/NewSession`, data)
       .then(res => {
         console.log(res.data._id)
         const timerToSecs = (duration.hours * 60 * 60 + duration.minutes * 60)

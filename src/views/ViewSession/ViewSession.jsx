@@ -10,7 +10,7 @@ function ViewSession({getAllSessions}) {
   // const [removeSession, setRemoveSession] = useState();
 
   const fetchOneSession = async () => {
-    const { data } = await axios.get(`http://localhost:5000/sessions/${id}`)
+    const { data } = await axios.get(`${process.env.BASE_URL}/sessions/${id}`)
     setSession(data)
   }
   useEffect(() => {
@@ -20,7 +20,7 @@ function ViewSession({getAllSessions}) {
   }, [])
 
   const handleRemove = async () => {
-    await axios.delete(`http://localhost:5000/sessions/${id}`);
+    await axios.delete(`${process.env.BASE_URL}/sessions/${id}`);
     getAllSessions();
     navigate('/home')
   }

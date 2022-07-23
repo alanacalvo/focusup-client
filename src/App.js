@@ -20,7 +20,7 @@ function App() {
   const [sessions, setSessions] = useState([]);
 
   const getAllSessions = async () => {
-    const { data } = await axios.get('http://localhost:5000/sessions');
+    const { data } = await axios.get(`${process.env.REACT_APP_BASE_URL}/sessions`);
     setSessions(data);
   }
   useEffect(() => {
