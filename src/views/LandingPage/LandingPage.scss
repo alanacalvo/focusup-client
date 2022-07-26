@@ -1,0 +1,31 @@
+$mint: #92ad94;
+$greyblue: #495867;
+$lighterblue: #79858A;
+$maroon: #31081f;
+$lightermaroon: #833F46;
+$orange: #e08e45;
+$lightorange: #AC8968;
+$plum: #6b0f1a;
+$darkgrey:#303134;
+
+.landingContainer {
+  display: flex;
+  align-items: center;
+}
+
+.innerLanding {
+  border: 3px solid $greyblue;
+  border-radius: 50%;
+  width: 50%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 250px;
+  padding-top: 25px;
+  margin-left: 400px;
+  background-color: $lighterblue;
+}
+.innerLanding h1 {
+  font-size: 50px;
+}

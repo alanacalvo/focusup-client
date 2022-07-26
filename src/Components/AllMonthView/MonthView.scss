@@ -15,7 +15,7 @@ $plum: #6b0f1a;
 // }
 
 :root {
-  --square-size: 45px;
+  --square-size: 49px;
   --square-gap: 5px;
   --week-width: calc(var(--square-size) + var(--square-gap));
 }
@@ -45,22 +45,25 @@ $plum: #6b0f1a;
 .months {
   display: grid;
   grid-template-columns: 
-    calc(var(--week-width) * 3)
+    calc(var(--week-width) * 5);
     // calc(var(--week-width) * 3)
     // calc(var(--week-width) * 3)
     // calc(var(--week-width) * 3)
+    margin: 0;
 }
 
 .days,
 .squares {
   display: grid;
   grid-gap: var(--square-gap);
-  grid-template-rows: repeat(6, var(--square-size));
+  grid-template-rows: repeat(9, var(--square-size));
 }
 
 .squares {
   grid-auto-flow: column;
   grid-auto-columns: var(--square-size);
+  padding-left: 0;
+  margin: 8px;
 }
 
 
@@ -72,15 +75,14 @@ body {
 }
 
 .graph {
-  padding: 20px;
+  // padding: 20px;
   // border: 1px #e1e4e8 solid;
-  margin: 20px;
+  // margin: 20px;
 }
 
 // .days li:nth-child(odd) {
 //   visibility: hidden;
 // }
-
 .squares li {
   background-color: #ebedf0;
 }
@@ -99,3 +101,9 @@ body {
 li {
   list-style-type: none;
 }
+.DayButtonContainer {
+  border: black 2px solid;
+}
+// h2 {
+//   padding-right: 
+// }

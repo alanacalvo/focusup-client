@@ -1,0 +1,27 @@
+$mint: #92ad94;
+$greyblue: #495867;
+$lighterblue: #79858A;
+$maroon: #31081f;
+$lightermaroon: #833F46;
+$orange: #e08e45;
+$lightorange: #AC8968;
+$plum: #6b0f1a;
+$darkgrey:#303134;
+.modalContainer {
+  width: 80%;
+  height: 80%;
+  position: absolute ;
+  z-index: 50;
+  top: 15%;
+  left: 10%;
+  display: flex;
+  justify-content: center;
+  border-radius: 12px;
+  background-color: $lightermaroon;
+  box-shadow: $maroon 0px 5px 15px;
+  flex-direction: column;
+  padding: 50px;
+  color: $maroon;
+  font-weight: bold;
+  font-size: 60px;;
+}

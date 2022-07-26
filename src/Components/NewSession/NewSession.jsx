@@ -61,7 +61,7 @@ function NewSession({ setOpenNewSessionModal, setOpenTimerModal, setCurrentSessi
       .then(res => {
         console.log(res.data._id)
         const timerToSecs = (duration.hours * 60 * 60 + duration.minutes * 60)
-        setSecondsRemaining(3)
+        setSecondsRemaining(timerToSecs)
         setOpenNewSessionModal(false)
         setActive(true)
         setCurrentSessionId(res.data._id)

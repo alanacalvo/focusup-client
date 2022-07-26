@@ -12,6 +12,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import './PostSession.scss'
 
 
 const initialDetails = {
@@ -78,6 +79,7 @@ function PostSessionForm({ session, currentSessionId }) {
   };
   return (
     <Box
+    className='modalContainer'
       component='form'
       autoComplete="off"
       noValidate

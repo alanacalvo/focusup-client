@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios'
+import './ViewSession.scss'
 
 
 function ViewSession({getAllSessions}) {
@@ -10,7 +11,7 @@ function ViewSession({getAllSessions}) {
   // const [removeSession, setRemoveSession] = useState();
 
   const fetchOneSession = async () => {
-    const { data } = await axios.get(`${process.env.BASE_URL}/sessions/${id}`)
+    const { data } = await axios.get(`${process.env.REACT_APP_BASE_URL}/sessions/${id}`)
     setSession(data)
   }
   useEffect(() => {
@@ -20,17 +21,19 @@ function ViewSession({getAllSessions}) {
   }, [])
 
   const handleRemove = async () => {
-    await axios.delete(`${process.env.BASE_URL}/sessions/${id}`);
+    await axios.delete(`${process.env.REACT_APP_BASE_URL}/sessions/${id}`);
     getAllSessions();
     navigate('/home')
   }
   
   return (
-    <div>
+    <div className='view'>
       <p>{session.name}</p>
-      <p>{session.todos}</p>
+      <p>{session.preSessionTodos}</p>
+      <p>{session.postSessionTodos}</p>
       <p>{session.length}</p>
       <p>{session.type}</p>
+      <p>{session.notes}</p>
       <button
       onClick={() => navigate(-1)}>Back</button>
       <button 
