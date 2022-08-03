@@ -5,7 +5,7 @@ A productivity app geared towards users with ADHD, or users that want to improve
 MongoDB, Express, React, Node
 
 ## Screenshots
-
+![screenshot](https://i.imgur.com/7QaDq9D.png)
 
 # User Stories
 
