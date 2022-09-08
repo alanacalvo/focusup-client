@@ -1,6 +1,8 @@
 # FocusUp
 A productivity app geared towards users with ADHD, or users that want to improve their focus. This app is designed to help the user stay on track and reach their personal goals during the timed sessions they set aside for productivity. Whether the users productivity session has been 'successful' or not, they will have the ability to record different factors that may have had an effect on such, such as nutrition, sleep, hydration, medication intake, etc. All of these details will be stored in a productivity session history inside of each users profile, so they can reflect back on these factors.
 
+https://focusup.netlify.app/
+
 ## TechStack Used
 MongoDB, Express, React, Node
 
