@@ -45,12 +45,12 @@ function App() {
       <TimerProvider>
         <Router>
           <Routes>
-            <Route path='/' element={<LandingPage />}></Route>
-            <Route path='/home' 
+            {/* <Route path='/' element={<LandingPage />}></Route> */}
+            {/* <Route path='/home' 
             element={!loginUser ? <Navigate to="/login" /> : <MainPage onLogout={() => {setLoginUser(null)}} getAllSessions={getAllSessions} sessions={sessions}/>}> 
-            </Route>
+            </Route> */}
             
-            {/* <Route path='/home' element={<MainPage getAllSessions={getAllSessions} sessions={sessions} />}></Route> */}
+            <Route path='/' element={<MainPage getAllSessions={getAllSessions} sessions={sessions} />}></Route>
             <Route path='/:id' element={<ViewSession getAllSessions={getAllSessions} sessions={sessions} />}></Route>
             
             <Route path='/login' element={loginUser ? <Navigate to='/home' /> : <Login setLoginUser={setLoginUser} loginUser={loginUser}/>}></Route>
