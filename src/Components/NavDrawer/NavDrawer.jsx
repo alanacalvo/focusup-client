@@ -17,9 +17,9 @@ function NavDrawer({ onLogout }) {
         <a href='/settings'>Settings</a>
         <a href='/connect'>Connect</a>
         <a href='/mealplan'>Meal Plan</a>
-        <button
+        {/* <button
           onClick={logOut}
-        >Log out</button>
+        >Log out</button> */}
       </nav>
       <p>Copyright</p>
     </>
